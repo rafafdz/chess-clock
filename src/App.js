@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import Clock from './components/Clock'
-import PlayPause from './components/buttons/PlayPause'
 import { useState } from 'react'
 import ButtonContainer from './components/buttons/ButtonContainer';
 
@@ -9,12 +7,13 @@ import ConfigModal from './config-modal/ConfigModal';
 
 const App = () => {
 
-  const [initialTime, setInitialTime] = useState(600)
+  const [initialTime, setInitialTime] = useState(9000)
   const [playerOneTurn, setPlayerOneTurn] = useState(true)
   const [paused, setPaused] = useState(true)
+  const [timeOne, setTimeOne] = useState(initialTime)
+  const [timeTwo, setTimeTwo] = useState(initialTime)
+
   const [settingsActive, setSettingsActive] = useState(false)
-  const [resetClockOne, setResetClockOne] = useState(false)
-  const [resetClockTwo, setResetClockTwo] = useState(false)
 
   const switchPlayers = () => {
     setPlayerOneTurn((currentPlayerOne) => !currentPlayerOne)
@@ -31,8 +30,9 @@ const App = () => {
 
   const onClickReset = () => {
     setPaused(true)
-    setResetClockOne(true)
-    setResetClockTwo(true)
+    setPlayerOneTurn(true)
+    setTimeOne(initialTime)
+    setTimeTwo(initialTime)
   }
 
   let configModal = null
@@ -48,15 +48,14 @@ const App = () => {
     <div className="app-container">
       { configModal }
 
-      <Clock  
-        turn={playerOneTurn} 
-        isPlayerOne={true}
+      <Clock
+        turn={!playerOneTurn}
+        isPlayerOne={false}
+        time={timeTwo}
+        setTime={setTimeTwo}
         initialTime={initialTime}
         switchPlayers={switchPlayers}
-        reset={resetClockOne}
-        setReset={setResetClockOne}
         paused={paused}
-        
       />
       
       <ButtonContainer
@@ -66,15 +65,15 @@ const App = () => {
         onClickReset={onClickReset}
       />
 
-      <Clock 
-       turn={!playerOneTurn} 
-       isPlayerOne={false}
-       initialTime={initialTime}
-       switchPlayers={switchPlayers}
-       reset={resetClockTwo}
-       setReset={setResetClockTwo}
-       paused={paused}
-       />
+      <Clock
+        turn={playerOneTurn}
+        isPlayerOne={true}
+        time={timeOne}
+        setTime={setTimeOne}
+        switchPlayers={switchPlayers}
+        paused={paused}
+      />
+
     </div>
   );
 }

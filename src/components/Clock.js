@@ -2,8 +2,13 @@ import { useState, useEffect } from 'react'
 
 
 const Seconds = ({seconds}) => {
+
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    const pretty_secs = secs < 10 ? '0' + secs : secs
+
     return (
-        <span className="seconds">{seconds}</span>
+        <span className="seconds">{`${minutes}:${pretty_secs}`}</span>
     )
 }
 
@@ -14,20 +19,20 @@ const Decimals = ({decimals}) => {
 }
 
 
-const Clock = ({isPlayerOne, turn, switchPlayers, 
-                initialTime, paused, reset, setReset}) => {
-    const [timeLeft, setTimeLeft] = useState(initialTime)
-
+const Clock = ({isPlayerOne, turn, switchPlayers, time, setTime, paused}) => {
     const decrementTime = () => {
-        setTimeLeft((prevTime) => prevTime - 1)
+        setTime((prevTime) => {
+            if (prevTime <= 0) return 0
+            return prevTime - 1
+        })
     }
 
     const getSeconds = () => {
-        return Math.floor(timeLeft / 10)
+        return Math.floor(time / 10)
     }
     
     const getDecimals = () => {
-        return timeLeft % 10
+        return time % 10
     }
 
     const clickHandler = () =>{
@@ -35,22 +40,17 @@ const Clock = ({isPlayerOne, turn, switchPlayers,
     }
 
     useEffect(() => {
-        if (reset){
-            setTimeLeft(initialTime)
-            setReset(false)
-        }
-
         let interval;
-        if (turn && !paused) {
+        if (turn && !paused && time > 0) {
             interval = setInterval(decrementTime, 100)
         }
         return () => {
             if (turn) clearInterval(interval)
         }
-    }, [turn, paused, reset, setReset, initialTime])
+    }, [turn, paused])
 
     return (
-        <div className={`clock ${isPlayerOne ? 'player-one' : 'player-two'} ${turn ? 'active' : ''}`}
+        <div className={`clock ${isPlayerOne ? 'player-one' : 'player-two'} ${turn && !paused ? 'active' : ''}`}
             onClick={clickHandler}
         >
             <p className="clock-text">

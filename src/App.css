@@ -29,7 +29,7 @@ body {
 
 
 .player-one {
-  background-color: rgb(212, 54, 54);
+  background-color: rgb(255, 44, 44);
   color: white;
 }
 
@@ -37,10 +37,9 @@ body {
   background-color: rgb(75, 16, 16);
 }
 
-.player-one .clock-text {
+.player-two .clock-text {
   transform: rotate(-180deg);
 }
-
 
 
 .player-two {
