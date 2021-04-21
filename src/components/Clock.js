@@ -1,32 +1,57 @@
 import { useState, useEffect } from 'react'
 
-const Clock = ({isPlayerOne, turn, switchPlayers, initialTime}) => {
+
+const Seconds = ({seconds}) => {
+    return (
+        <span className="seconds">{seconds}</span>
+    )
+}
+
+const Decimals = ({decimals}) => {
+    return (
+        <span className="decimals">{decimals}</span>
+    )
+}
+
+
+const Clock = ({isPlayerOne, turn, switchPlayers, initialTime, paused}) => {
     const [timeLeft, setTimeLeft] = useState(initialTime)
 
     const decrementTime = () => {
         setTimeLeft((prevTime) => prevTime - 1)
     }
+
+    const getSeconds = () => {
+        return Math.floor(timeLeft / 10)
+    }
     
+    const getDecimals = () => {
+        return timeLeft % 10
+    }
+
+
     const clickHandler = () =>{
-        if (turn) switchPlayers();
+        if (turn && !paused) switchPlayers();
     }
 
     useEffect(() => {
         let interval;
-        if (turn) {
-            interval = setInterval(decrementTime, 1000)
+        if (turn && !paused) {
+            interval = setInterval(decrementTime, 100)
         }
         return () => {
             if (turn) clearInterval(interval)
         }
-    }, [turn])
+    }, [turn, paused])
 
     return (
         <div className={`clock ${isPlayerOne ? 'player-one' : 'player-two'} ${turn ? 'active' : ''}`}
             onClick={clickHandler}
         >
-            <p class={`clock-text ${isPlayerOne && 'is-inverted'}`}> 
-                { timeLeft }
+            <p className="clock-text">
+                <Seconds seconds={getSeconds()} />
+                .
+                <Decimals decimals={getDecimals()} />
             </p>
         </div>
     )

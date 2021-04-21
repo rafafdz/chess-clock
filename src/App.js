@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import Clock from './components/Clock'
-import { IoPauseCircle } from "react-icons/io5"
+import PlayPause from './components/PlayPause'
 import { useState } from 'react'
 
 import './App.css';
@@ -9,10 +9,15 @@ const App = () => {
 
   const [initialTime, setInitialTime] = useState(600)
   const [playerOneTurn, setPlayerOneTurn] = useState(true)
+  const [paused, setPaused] = useState(true)
 
 
   const switchPlayers = () => {
     setPlayerOneTurn((currentPlayerOne) => !currentPlayerOne)
+  }
+
+  const onClickPlayPause = () =>{
+    setPaused(!paused)
   }
 
   return (
@@ -22,18 +27,21 @@ const App = () => {
         isPlayerOne={true}
         initialTime={initialTime}
         switchPlayers={switchPlayers}
+        paused={paused}
+        
       />
-      <div className='pause-container'>
-        <div className="pause-button">
-          <IoPauseCircle className="icon"/>
-        </div>
-      </div>
+      
+      <PlayPause
+        paused={paused}
+        onClick={onClickPlayPause}
+      />
 
       <Clock 
        turn={!playerOneTurn} 
        isPlayerOne={false}
        initialTime={initialTime}
        switchPlayers={switchPlayers}
+       paused={paused}
        />
     </div>
   );
