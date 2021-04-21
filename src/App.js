@@ -1,23 +1,40 @@
 import logo from './logo.svg';
+import Clock from './components/Clock'
+import { IoPauseCircle } from "react-icons/io5"
+import { useState } from 'react'
+
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [initialTime, setInitialTime] = useState(600)
+  const [playerOneTurn, setPlayerOneTurn] = useState(true)
+
+
+  const switchPlayers = () => {
+    setPlayerOneTurn((currentPlayerOne) => !currentPlayerOne)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Clock  
+        turn={playerOneTurn} 
+        isPlayerOne={true}
+        initialTime={initialTime}
+        switchPlayers={switchPlayers}
+      />
+      <div className='pause-container'>
+        <div className="pause-button">
+          <IoPauseCircle className="icon"/>
+        </div>
+      </div>
+
+      <Clock 
+       turn={!playerOneTurn} 
+       isPlayerOne={false}
+       initialTime={initialTime}
+       switchPlayers={switchPlayers}
+       />
     </div>
   );
 }
