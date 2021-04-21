@@ -14,7 +14,8 @@ const Decimals = ({decimals}) => {
 }
 
 
-const Clock = ({isPlayerOne, turn, switchPlayers, initialTime, paused}) => {
+const Clock = ({isPlayerOne, turn, switchPlayers, 
+                initialTime, paused, reset, setReset}) => {
     const [timeLeft, setTimeLeft] = useState(initialTime)
 
     const decrementTime = () => {
@@ -29,12 +30,16 @@ const Clock = ({isPlayerOne, turn, switchPlayers, initialTime, paused}) => {
         return timeLeft % 10
     }
 
-
     const clickHandler = () =>{
         if (turn && !paused) switchPlayers();
     }
 
     useEffect(() => {
+        if (reset){
+            setTimeLeft(initialTime)
+            setReset(false)
+        }
+
         let interval;
         if (turn && !paused) {
             interval = setInterval(decrementTime, 100)
@@ -42,7 +47,7 @@ const Clock = ({isPlayerOne, turn, switchPlayers, initialTime, paused}) => {
         return () => {
             if (turn) clearInterval(interval)
         }
-    }, [turn, paused])
+    }, [turn, paused, reset, setReset, initialTime])
 
     return (
         <div className={`clock ${isPlayerOne ? 'player-one' : 'player-two'} ${turn ? 'active' : ''}`}
