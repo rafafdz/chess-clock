@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/chess-clock/static/css/main.143300ac.chunk.css",
+    "main.css": "/chess-clock/static/css/main.8a41ed3a.chunk.css",
     "main.js": "/chess-clock/static/js/main.aa4c0d5e.chunk.js",
     "main.js.map": "/chess-clock/static/js/main.aa4c0d5e.chunk.js.map",
     "runtime-main.js": "/chess-clock/static/js/runtime-main.841104c5.js",
@@ -10,13 +10,13 @@
     "static/js/3.baffc46e.chunk.js": "/chess-clock/static/js/3.baffc46e.chunk.js",
     "static/js/3.baffc46e.chunk.js.map": "/chess-clock/static/js/3.baffc46e.chunk.js.map",
     "index.html": "/chess-clock/index.html",
-    "static/css/main.143300ac.chunk.css.map": "/chess-clock/static/css/main.143300ac.chunk.css.map",
+    "static/css/main.8a41ed3a.chunk.css.map": "/chess-clock/static/css/main.8a41ed3a.chunk.css.map",
     "static/js/2.e36dd44d.chunk.js.LICENSE.txt": "/chess-clock/static/js/2.e36dd44d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.841104c5.js",
     "static/js/2.e36dd44d.chunk.js",
-    "static/css/main.143300ac.chunk.css",
+    "static/css/main.8a41ed3a.chunk.css",
     "static/js/main.aa4c0d5e.chunk.js"
   ]
 }
