@@ -1,9 +1,9 @@
 import Clock from './components/Clock'
 import { useState } from 'react'
-import ButtonContainer from './components/buttons/ButtonContainer';
-
+import ButtonContainer from './components/buttons/ButtonContainer'
+import switch_audio from './audios/switch.wav'
 import './App.css';
-import ConfigModal from './config-modal/ConfigModal';
+import ConfigModal from './config-modal/ConfigModal'
 
 const App = () => {
 
@@ -15,8 +15,12 @@ const App = () => {
 
   const [settingsActive, setSettingsActive] = useState(false)
 
+  const audio = new Audio(switch_audio)
+  audio.volume = 0.7
+
   const switchPlayers = () => {
     setPlayerOneTurn((currentPlayerOne) => !currentPlayerOne)
+    audio.play()
   }
 
   const onClickPlayPause = () =>{
