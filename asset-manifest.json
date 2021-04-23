@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chess-clock/static/css/main.d74aa7b2.chunk.css",
-    "main.js": "/chess-clock/static/js/main.91bbab0d.chunk.js",
-    "main.js.map": "/chess-clock/static/js/main.91bbab0d.chunk.js.map",
+    "main.js": "/chess-clock/static/js/main.f82eedc0.chunk.js",
+    "main.js.map": "/chess-clock/static/js/main.f82eedc0.chunk.js.map",
     "runtime-main.js": "/chess-clock/static/js/runtime-main.841104c5.js",
     "runtime-main.js.map": "/chess-clock/static/js/runtime-main.841104c5.js.map",
     "static/js/2.e36dd44d.chunk.js": "/chess-clock/static/js/2.e36dd44d.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.841104c5.js",
     "static/js/2.e36dd44d.chunk.js",
     "static/css/main.d74aa7b2.chunk.css",
-    "static/js/main.91bbab0d.chunk.js"
+    "static/js/main.f82eedc0.chunk.js"
   ]
 }
