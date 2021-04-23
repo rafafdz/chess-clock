@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chess-clock/static/css/main.d74aa7b2.chunk.css",
-    "main.js": "/chess-clock/static/js/main.faf36773.chunk.js",
-    "main.js.map": "/chess-clock/static/js/main.faf36773.chunk.js.map",
+    "main.js": "/chess-clock/static/js/main.91bbab0d.chunk.js",
+    "main.js.map": "/chess-clock/static/js/main.91bbab0d.chunk.js.map",
     "runtime-main.js": "/chess-clock/static/js/runtime-main.841104c5.js",
     "runtime-main.js.map": "/chess-clock/static/js/runtime-main.841104c5.js.map",
     "static/js/2.e36dd44d.chunk.js": "/chess-clock/static/js/2.e36dd44d.chunk.js",
@@ -13,12 +13,13 @@
     "service-worker.js": "/chess-clock/service-worker.js",
     "service-worker.js.map": "/chess-clock/service-worker.js.map",
     "static/css/main.d74aa7b2.chunk.css.map": "/chess-clock/static/css/main.d74aa7b2.chunk.css.map",
-    "static/js/2.e36dd44d.chunk.js.LICENSE.txt": "/chess-clock/static/js/2.e36dd44d.chunk.js.LICENSE.txt"
+    "static/js/2.e36dd44d.chunk.js.LICENSE.txt": "/chess-clock/static/js/2.e36dd44d.chunk.js.LICENSE.txt",
+    "static/media/switch.868a6b6e.wav": "/chess-clock/static/media/switch.868a6b6e.wav"
   },
   "entrypoints": [
     "static/js/runtime-main.841104c5.js",
     "static/js/2.e36dd44d.chunk.js",
     "static/css/main.d74aa7b2.chunk.css",
-    "static/js/main.faf36773.chunk.js"
+    "static/js/main.91bbab0d.chunk.js"
   ]
 }
