@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 
-const Seconds = ({seconds}) => {
+const Seconds = ({ seconds }) => {
 
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
@@ -12,14 +12,28 @@ const Seconds = ({seconds}) => {
     )
 }
 
-const Decimals = ({decimals}) => {
+const Decimals = ({ decimals }) => {
     return (
         <span className="decimals">{decimals}</span>
     )
 }
 
 
-const Clock = ({isPlayerOne, turn, switchPlayers, time, setTime, paused}) => {
+const Clock = ({ isPlayerOne, turn, switchPlayers, time, setTime, paused }) => {
+
+    const getSeconds = () => {
+        return Math.floor(time / 10)
+    }
+
+    const getDecimals = () => {
+        return time % 10
+    }
+
+    const clickHandler = () => {
+        if (turn && !paused) switchPlayers();
+    }
+
+
     const decrementTime = () => {
         setTime((prevTime) => {
             if (prevTime <= 0) return 0
@@ -27,19 +41,8 @@ const Clock = ({isPlayerOne, turn, switchPlayers, time, setTime, paused}) => {
         })
     }
 
-    const getSeconds = () => {
-        return Math.floor(time / 10)
-    }
-    
-    const getDecimals = () => {
-        return time % 10
-    }
-
-    const clickHandler = () =>{
-        if (turn && !paused) switchPlayers();
-    }
-
     useEffect(() => {
+
         let interval;
         if (turn && !paused && time > 0) {
             interval = setInterval(decrementTime, 100)
