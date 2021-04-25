@@ -1,6 +1,7 @@
 import Clock from './components/Clock'
 import { useEffect, useState } from 'react'
 import ButtonContainer from './components/buttons/ButtonContainer'
+import { Howl } from 'howler'
 import switch_audio from './audios/switch.wav'
 import './App.css';
 import ConfigModal from './config-modal/ConfigModal'
@@ -15,10 +16,10 @@ const App = () => {
 
   const [settingsActive, setSettingsActive] = useState(false)
 
-  const [audio, setAudio] = useState(new Audio(switch_audio))
+  const [audio, setAudio] = useState(new Howl({src: switch_audio, volume: 0.7}))
 
   useEffect(() => {
-    audio.volume = 0.7
+    // audio.volume = 0.7
 
     if ('wakeLock' in navigator) {
       console.log('wakelock in navigator!')
