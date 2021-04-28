@@ -13,7 +13,6 @@ const App = () => {
   const [paused, setPaused] = useState(true)
   const [timeOne, setTimeOne] = useState(initialTime)
   const [timeTwo, setTimeTwo] = useState(initialTime)
-
   const [settingsActive, setSettingsActive] = useState(false)
 
   const [audio, setAudio] = useState(new Howl({src: switch_audio, volume: 0.7}))
@@ -37,7 +36,7 @@ const App = () => {
   }
 
   const onClickPlayPause = () =>{
-    setPaused(!paused)
+    setPaused((paused) => !paused)
   }
 
   const onClickSettings = () => {
@@ -70,7 +69,6 @@ const App = () => {
         isPlayerOne={false}
         time={timeTwo}
         setTime={setTimeTwo}
-        initialTime={initialTime}
         switchPlayers={switchPlayers}
         paused={paused}
       />

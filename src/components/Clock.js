@@ -42,7 +42,6 @@ const Clock = ({ isPlayerOne, turn, switchPlayers, time, setTime, paused }) => {
     }
 
     useEffect(() => {
-
         let interval;
         if (turn && !paused && time > 0) {
             interval = setInterval(decrementTime, 100)
